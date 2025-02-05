@@ -1,0 +1,31 @@
+name: 'Send Email Notification'
+description: 'A GitHub Action to send email notifications.'
+author: 'Raju Ghimire'
+inputs:
+  smtp_server:
+    description: 'SMTP server address'
+    required: true
+  smtp_port:
+    description: 'SMTP server port'
+    required: true
+  smtp_username:
+    description: 'SMTP username'
+    required: true
+  smtp_password:
+    description: 'SMTP password'
+    required: true
+  to_email:
+    description: 'Recipient email address'
+    required: true
+  subject:
+    description: 'Email subject'
+    required: true
+  body:
+    description: 'Email body content'
+    required: true
+outputs:
+  success:
+    description: 'Whether the email was sent successfully'
+runs:
+  using: 'python'
+  main: 'send_email.py'
