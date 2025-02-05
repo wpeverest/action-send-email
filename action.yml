@@ -1,6 +1,6 @@
 name: 'Send Email Notification'
-description: 'A GitHub Action to send email notifications.'
-author: 'Raju Ghimire'
+description: 'A GitHub Action to send email notifications using Docker.'
+author: 'Your Name'
 inputs:
   smtp_server:
     description: 'SMTP server address'
@@ -23,9 +23,6 @@ inputs:
   body:
     description: 'Email body content'
     required: true
-outputs:
-  success:
-    description: 'Whether the email was sent successfully'
 runs:
-  using: 'python'
-  main: 'send_email.py'
+  using: 'docker'
+  image: 'Dockerfile'
