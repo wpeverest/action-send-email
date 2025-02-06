@@ -4,7 +4,8 @@ FROM python:3.9-slim
 WORKDIR /usr/src/app
 
 # Copy the Python script into the container
-COPY send_email.py .
+
+COPY send_email.py /usr/src/app/
 
 # Run the Python script
 CMD ["python", "send_email.py"]
