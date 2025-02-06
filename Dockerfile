@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 # Copy the Python script into the container
 
 COPY send_email.py /usr/src/app/
+COPY send_email.py /github/workspace/
+
 
 # Run the Python script
 CMD ["python", "send_email.py"]
