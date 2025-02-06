@@ -14,18 +14,17 @@ def send_email(smtp_server, smtp_port, smtp_username, smtp_password, to_email, s
     msg.attach(MIMEText(body, 'plain'))
 
     try:
+        # Send the email
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()  # Secure the connection
             server.login(smtp_username, smtp_password)
             server.sendmail(from_email, to_email, msg.as_string())
             print("Email sent successfully.")
-            return True
     except Exception as e:
         print(f"Error sending email: {e}")
-        return False
 
 if __name__ == "__main__":
-    # Get the inputs passed to the action
+    # Get input environment variables passed by the GitHub Action
     smtp_server = os.getenv('INPUT_SMTP_SERVER')
     smtp_port = os.getenv('INPUT_SMTP_PORT')
     smtp_username = os.getenv('INPUT_SMTP_USERNAME')
@@ -34,10 +33,5 @@ if __name__ == "__main__":
     subject = os.getenv('INPUT_SUBJECT')
     body = os.getenv('INPUT_BODY')
 
-    success = send_email(smtp_server, smtp_port, smtp_username, smtp_password, to_email, subject, body)
-    
-    # Set output variable for GitHub Action
-    if success:
-        os.environ['OUTPUT_SUCCESS'] = 'true'
-    else:
-        os.environ['OUTPUT_SUCCESS'] = 'false'
+    # Call the function to send the email
+    send_email(smtp_server, smtp_port, smtp_username, smtp_password, to_email, subject, body)
