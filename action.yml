@@ -1,6 +1,6 @@
 name: 'Send Email Notification'
 description: 'A GitHub Action to send email notifications using Docker.'
-author: 'Your Name'
+author: 'Raju Ghimire'
 inputs:
   smtp_server:
     description: 'SMTP server address'
